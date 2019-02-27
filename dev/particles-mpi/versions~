@@ -1,0 +1,11 @@
+/code3
+  Criação de sub funções.
+/code4
+  Sem MPI.
+  Makefile -5 : ok
+	   -1 : fail
+	   -3 : fail
+/code5
+  Debbug
+  Mudança no arquivo lag_map.c -> permissão de adição de elementos na fronteira do domínio
+  

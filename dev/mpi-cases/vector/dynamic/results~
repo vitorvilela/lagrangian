@@ -1,0 +1,37 @@
+
+Inside - myrank: 0 - vector[0]: 10.000000
+
+Inside - myrank: 0 - vector[1]: 10.000000
+
+Inside - myrank: 0 - vector[2]: 10.000000
+
+Inside - myrank: 0 - vector[3]: 10.000000
+
+Inside - myrank: 0 - vector[4]: 10.000000
+
+Inside - myrank: 0 - vector[5]: 10.000000
+
+Inside - myrank: 0 - vector[6]: 10.000000
+
+Inside - myrank: 0 - vector[7]: 10.000000
+
+Inside - myrank: 0 - vector[8]: 10.000000
+
+
+Inside after - myrank: 1 - vsize: 10
+
+vector = malloc(vsize*(sizeof(double)));
+Inside - myrank: 0 - vector[9]: 10.000000
+
+[linux-6t2e:06747] *** Process received signal ***
+[linux-6t2e:06747] Signal: Segmentation fault (11)
+[linux-6t2e:06747] Signal code: Address not mapped (1)
+[linux-6t2e:06747] Failing at address: 0xeab480
+[linux-6t2e:06747] [ 0] /lib64/libpthread.so.0(+0xf140) [0x7f570ade1140]
+[linux-6t2e:06747] [ 1] a.out(main+0x25b) [0x40192b]
+[linux-6t2e:06747] [ 2] /lib64/libc.so.6(__libc_start_main+0xf5) [0x7f570aa4e455]
+[linux-6t2e:06747] [ 3] a.out() [0x4015e9]
+[linux-6t2e:06747] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 6747 on node linux-6t2e exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

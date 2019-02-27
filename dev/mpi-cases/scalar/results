@@ -1,0 +1,14 @@
+
+Ouside before - myrank: 0 / scalar: -1
+
+Inside - myrank: 0 / scalar: 0
+
+Ouside before - myrank: 1 / scalar: -1
+
+Inside before - myrank: 1 / scalar: 1
+
+Inside after - myrank: 1 / scalar: 0
+
+Ouside after - myrank: 1 / scalar: 0
+
+Ouside after - myrank: 0 / scalar: 0
