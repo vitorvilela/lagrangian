@@ -1,0 +1,211 @@
+/pasr1
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: Criação da base do programa, função de adição de partículas e monitoramento
+Data recebido/criação: 24/05/2013 
+Data visto: 24/05/2013
+Status: Concluido
+Histórico:
+
+/pasr2
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: Inicialização de zeta, plot vtk, diagrama, malha euleriana
+Data recebido/criação: 27/05/2013 
+Data visto: 27/05/2013
+Status: Concluido
+Histórico:
+
+/pasr3
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: macro-mixing model com verificação/mudança de volume a cada dt -- Não totalmente adaptado ao AMR3D, específico para análise do PaSR de código próprio
+Data recebido/criação: 28/05/2013
+Data visto: 29/05/2013
+Status: Concluido
+Histórico:
+- Necessidade de ser criar 'index_t inew' no tipo da partícula porque a realocação deve ocorrer após o loop completo, para que não ocorra re-visita.
+- Retirada de const double x, y, z para que a busca possa ser realizada várias vezes dentro do laço. (Verificar necessidade da rodada)
+- Verificar a posteriori se é possível fragmentar as funções. ex. busca por partícula de endereço alterado e re-alocação
+
+--> problemas na execução....checar passo a passo
+
+Versão fechada, porém deve-se verificar os resultados para analizar coerencia. A pfd apresentou valor maior do que a unidade para o tempo de 1000s.
+Instrumentar o código para assegurar macromistura antes de efetuar a micromistura.
+
+
+/pasr4
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: consolidação do desenvolvimento da função pdf print e regularização da pdf <= 1.0 pela divisão correta de nparticulas por volume. correção de pesos por passo temporal
+Data recebido/criação: 31/05/2013
+Data visto: 31/05/2013
+Status: Concluido
+Histórico:
+resultados1-sem correção de pesos
+resultados2-com correção de pesos
+
+OBSERVAÇÃO ---> HOUVE RETIRADA DA FUNÇÃO DE IMPRESSAO DO PESO..FEITA INDEVIDAMENTE. ATUALIZAR NAS VERSÃO SEGUINTES
+	   
+	   
+	   
+!!!!!!!!!!!!!! OVERFLOW ___ MEMORIA É REQUISITADA ATÉ O LIMITE DENTRO DO MICROMIXING _____________ TRAVA O SISTEMA !!!!!!!!!!!!!!!!!!!	   
+//RETIRAR MALLOC DO LAÇO???
+
+/pasr4_1
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: teste de overflow
+Data recebido/criação: 07/06/2013
+Data visto: 13/06/2013
+Status: Concluido - Continua em map_4_2
+Histórico:
+	   
+	   
+PROBLEMA quando se tenta encontrar iter_particle->hh.next de um elemento adicionado que ficou no final da hash table (ex.. iteração no tempo futuro)
+Tentar resolver isto substituindo While() por iter. (Não resolvido)
+
+MAP.H modificado 13/06 - retirada de malloc desnecessárias em funções find.
+Nova versão de map 13/06 ... verificadas as funções find particle para multinivel
+
+/pasr4_2
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: teste de overflow
+Data recebido/criação: 13/06/2013
+Data visto: 13/06/2013
+Status: Concluido
+Histórico:
+	   
+Resolvido e testado para malha uniforme
+
+
+/pasr4_2_COBEM
+Descrição geral: versão para publicação no COBEM baseado em map4_2
+Objetivo: Condição de contorno periódica na direção x e velocidade x dada
+Data recebido/criação: 14/06/2013
+Data visto: 14/06/2013
+Status: Em elaboração
+Histórico:
+	   
+	   
+/pasr4_cobem
+Descrição geral: Versão para publicação no COBEM
+Objetivo: criação de inicialização de zetap multicamada e cc. periodica em x
+Data recebido/criação: 05/06/2013
+Data visto: 05/06/2013
+Status: Concluido
+Histórico:
+    termo zerado até que se entenda aplicação dte*grad_gx...
+    
+/pasr5
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: criação de módulo independente com interface para map.h para adição de partículas no mapa com refinamento
+Data recebido/criação: 04/06/2013
+Data visto: 04/06/2013
+Status: Concluido
+Histórico:
+- Instrumentar para verificar o código e fechar interface
+
+/pasr6
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: instrumentação da função recursiva e verificação de funcionalidade
+Data recebido/criação: 05/06/2013
+Data visto: 05/06/2013
+Status: Abortado
+Histórico:
+
+/pasr7
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: implementação de função de adição multinivel via search particle function a partir de map6 abortado. Inicialização de zeta por loop no array de particulas e não na HT
+Data recebido/criação: 05/06/2013
+Data visto: 05/06/2013
+Status: Concluido
+Histórico:
+- Demanda por move_micromixing utilizando algoritmo 1 para add particles - necessita de loop para os volumes no último nivel de refinamento local, ou seja, algoritmo 2
+- Demandas:
+    desenvolvimento de algoritmo 2 -> micromixing e weigth adequadamente
+    funções de impressão: malha, vtk, data distribuition, e pdf para malha multibloco
+
+/pasr8
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: criação de algoritmo 2 multinivel
+Data recebido/criação: 06/06/2013
+Data visto: 06/06/2013
+Status: Concluido
+Histórico:
+- proxima versão: Validar com malha complexa e adicionar partículas, checar dispersão (adição uniforme)
+
+
+A partir da versão map9 - map.h já é o atualizado pela versão map4_2
+
+
+/pasr9
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: criação de algoritmo 2 multinivel não duplicando memória 
+Data recebido/criação: 13/06/2013
+Data visto: 17/06/2013
+Status: Continua em /pasr9_1
+Histórico:
+
+/pasr9_1
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: criação de algoritmo 2 multinivel não duplicando memória 
+Data recebido/criação: 13/06/2013
+Data visto: 17/06/2013
+Status: Concluido
+Histórico: Alteração do algoritmo e continuação de /pasr9
+
+/pasr10
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: Criação de função de adição de partícula uniformemente no domínio 
+Data recebido/criação: 17/06/2013
+Data visto: 17/06/2013
+Status: Concluido
+Histórico:
+
+/pasr11
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: Criação de função para impressão de Qde de partícula por volume utilizando Particle Map()
+Data recebido/criação: 20/06/2013
+Data visto: 20/06/2013
+Status: Concluido
+Histórico:
+
+/pasr12
+Descrição geral: Criação de PaSR com vários volumes, inicialização de partículas (IDs na HT e Lista de partículas em vetor de tipo definido)
+Objetivo: Inicialização de particulas por Particle Map()
+Data recebido/criação: 20/06/2013
+Data visto: 20/06/2013
+Status: Em elaboração
+Histórico:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
