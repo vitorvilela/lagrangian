@@ -22,3 +22,4 @@ TODO:
 REFERENCES AT:
 
 - https://repositorio.ufu.br/bitstream/123456789/14982/1/HybridLesLagrangian.pdf
+- https://aip.scitation.org/doi/pdf/10.1063/5.0045873
